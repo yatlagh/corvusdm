@@ -1,74 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corvus Communication Agency - Coming Soon</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Custom CSS Styles */
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-
-        .coming-soon {
-            text-align: center;
-            padding: 100px;
-        }
-
-        .logo {
-            font-size: 48px;
-            font-weight: bold;
-            color: #f39c12; /* Your brand color */
-        }
-
-        p {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        #countdown {
-            font-size: 24px;
-            margin-top: 30px;
-            color: #f39c12; /* Your brand color */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Coming Soon - Corvus Communication Agency</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #333;
+      color: #fff;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .counter {
+      font-size: 48px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 coming-soon">
-                <div class="logo">Corvus Communication Agency</div>
-                <p>Welcome to Corvus Communication Agency! We are working hard to bring you an amazing website. Stay tuned for exciting updates and content.</p>
-                <div id="countdown"></div>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+    <div class="logo">Corvus Communication Agency</div>
+    <p>Specializing in Web Development, SEO, and Digital Marketing</p>
+    <div id="timer" class="counter"></div>
+  </div>
+  
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
 
-    <script>
-        // Set the date we're counting down to (7 days from now)
-        const countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
 
-        // Update the countdown every second
-        const countdown = document.getElementById('countdown');
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+      // Get the current date and time
+      var now = new Date().getTime();
 
-            if (distance < 0) {
-                clearInterval(x);
-                countdown.innerHTML = "Website is live!";
-            } else {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Find the remaining time
+      var remaining = countDownDate - now;
 
-                countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-            }
-        }, 1000);
-    </script>
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      // If the countdown is over, display a message
+      if (remaining < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "WE ARE LIVE NOW!";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
